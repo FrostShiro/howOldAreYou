@@ -1,0 +1,59 @@
+using System;
+
+namespace howOldAmI
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hi! What should i call you?");
+            string name = Console.ReadLine();
+            Console.WriteLine("Do you want me to tell you old you are?");
+            string yesNo = Console.ReadLine();
+            if (yesNo.ToLower() == "yes")
+            {
+                Console.WriteLine("What day were you born? dd/mm/yyyy");
+                DateTime born = DateTime.Parse(Console.ReadLine());
+                TimeSpan age = DateTime.Today - born;
+                Console.WriteLine("How do you want me to tell you? years/months/days/minutes/seconds/milliseconds");
+                string wantedFormat = Console.ReadLine();
+                if (wantedFormat.ToLower() == "years")
+                {
+                    Console.WriteLine($"{name} is {age.Days / 365.255} years old!");
+                }
+                else if (wantedFormat.ToLower() == "months")
+                {
+                    Console.WriteLine($"{name} is {age.Days / 12} months old!");
+                }
+                else if (wantedFormat.ToLower() == "days")
+                {
+                    Console.WriteLine($"{name} is {age.Days} days old!");
+                }
+                else if (wantedFormat.ToLower() == "minutes")
+                {
+                    Console.WriteLine($"{name} is {age.Minutes} minutes old!");
+                }
+                else if (wantedFormat.ToLower() == "seconds")
+                {
+                    Console.WriteLine($"{name} is {age.Seconds} seconds old!");
+                }
+                else if (wantedFormat.ToLower() == "milliseconds")
+                {
+                    Console.WriteLine($"{name} is {age.Milliseconds} milliseconds old!");
+                }
+                else
+                {
+                    Console.WriteLine($"I'm sorry {name} i didn't understand that");
+                }
+            }
+            else if (yesNo == "no")
+            {
+                Console.WriteLine("Alright have a nice day!");
+            }
+            else
+            {
+                Console.WriteLine("Im sorry could you answer with a yes or no, i couldn't understand that");
+            }
+        }
+    }
+}
